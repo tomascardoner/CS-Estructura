@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E33E0DC-2086-4064-810A-AD51DB8CBEC0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>Sub Main</StartupObject>
+    <RootNamespace>CSEstructura</RootNamespace>
+    <AssemblyName>CSEstructura</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>CSEstructura.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>CSEstructura.xml</DocumentationFile>
+    <NoWarn>
+    </NoWarn>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>506700-factory.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=17.1460.0.47, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ComboBox.vb">
+      <Link>CS_ComboBox.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Constants.vb">
+      <Link>CS_Constants.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Control_TabControl.vb">
+      <Link>CS_Control_TabControl.vb</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Control_Textbox_Number.vb">
+      <Link>CS_Control_Textbox_Number.vb</Link>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Database_EF_SQL.vb">
+      <Link>CS_Database_EF_SQL.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Parameter_System.vb">
+      <Link>CS_Parameter_System.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_String.vb">
+      <Link>CS_String.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ValueTranslation.vb">
+      <Link>CS_ValueTranslation.vb</Link>
+    </Compile>
+    <Compile Include="Accion.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Database_SQL.vb">
+      <Link>CS_Database_SQL.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Encryption_TripleDES.vb">
+      <Link>CS_Encryption_TripleDES.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Error.vb">
+      <Link>CS_Error.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ErrorMessageBox.designer.vb">
+      <Link>CS_ErrorMessageBox.designer.vb</Link>
+      <DependentUpon>CS_ErrorMessageBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ErrorMessageBox.vb">
+      <Link>CS_ErrorMessageBox.vb</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Form.vb">
+      <Link>CS_Form.vb</Link>
+    </Compile>
+    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Instance.vb">
+      <Link>CS_Instance.vb</Link>
+    </Compile>
+    <Compile Include="Clase.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Clase_Propiedad.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Clase_Propiedad_Lista.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Constantes.vb" />
+    <Compile Include="CSEstructura.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSEstructura.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CSEstructura.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSEstructura.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CSEstructura.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFrameworkExtension.vb" />
+    <Compile Include="FillAndRefreshLists.vb" />
+    <Compile Include="formClase.Designer.vb">
+      <DependentUpon>formClase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formClase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formClases.Designer.vb">
+      <DependentUpon>formClases.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formClases.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formClase_Propiedad.Designer.vb">
+      <DependentUpon>formClase_Propiedad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formClase_Propiedad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formClase_Propiedad_Lista.Designer.vb">
+      <DependentUpon>formClase_Propiedad_Lista.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formClase_Propiedad_Lista.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMDIMain.Designer.vb">
+      <DependentUpon>formMDIMain.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formMDIMain.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formObjetos.Designer.vb">
+      <DependentUpon>formObjetos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formObjetos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formObjeto_Propiedad.Designer.vb">
+      <DependentUpon>formObjeto_Propiedad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formObjeto_Propiedad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSplashScreen.Designer.vb">
+      <DependentUpon>formSplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="formSplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MiscFunctions.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Objeto.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Objeto_Propiedad.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parametro.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parametros.vb" />
+    <Compile Include="StartUp.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ErrorMessageBox.resx">
+      <Link>CS_ErrorMessageBox.resx</Link>
+      <DependentUpon>CS_ErrorMessageBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formClase.resx">
+      <DependentUpon>formClase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formClases.resx">
+      <DependentUpon>formClases.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formClase_Propiedad.resx">
+      <DependentUpon>formClase_Propiedad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formClase_Propiedad_Lista.resx">
+      <DependentUpon>formClase_Propiedad_Lista.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMDIMain.resx">
+      <DependentUpon>formMDIMain.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formObjetos.resx">
+      <DependentUpon>formObjetos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formObjeto_Propiedad.resx">
+      <DependentUpon>formObjeto_Propiedad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSplashScreen.resx">
+      <DependentUpon>formSplashScreen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="CSEstructura.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CSEstructura.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CSEstructura.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CSEstructura.edmx</DependentUpon>
+      <LastGenOutput>CSEstructura.Context.vb</LastGenOutput>
+    </None>
+    <None Include="CSEstructura.edmx.diagram">
+      <DependentUpon>CSEstructura.edmx</DependentUpon>
+    </None>
+    <None Include="CSEstructura.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CSEstructura.edmx</DependentUpon>
+      <LastGenOutput>CSEstructura.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Actions-dialog-cancel-icon %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-dialog-close-icon %288%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-dialog-close-icon %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-new-icon %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-edit-delete-icon %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-document-edit-icon %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Window - Close All.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WindowFitToSize16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Window - Tile Horizontally.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Window - Tile Vertically.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Move Next %28Arrow%29 Green24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Move Previous %28Arrow%29 Red24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-dialog-ok-apply-icon %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer %287%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-print-preview %287%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-print-preview %286%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ReportWithChart32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search-icon %288%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="506700-factory.ico" />
+    <None Include="Resources\worm-gear-icon_32.png" />
+    <None Include="Resources\Pink Floyd Animals.png" />
+    <None Include="Resources\App256.png" />
+    <None Include="Resources\506700-factory1.ico" />
+    <None Include="Resources\School2_321.png" />
+    <None Include="Resources\506700-factory.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
