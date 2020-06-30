@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Sistema de Inventario de Estructura")>
 <Assembly: AssemblyCompany("Cardoner Sistemas")> 
 <Assembly: AssemblyProduct("CS-Estructura")>
-<Assembly: AssemblyCopyright("Copyright © 2012-2019 Cardoner Sistemas")>
+<Assembly: AssemblyCopyright("Copyright © 2012-2020 Cardoner Sistemas")>
 <Assembly: AssemblyTrademark("® CS-Estructura 2019")>
 
 <Assembly: ComVisible(False)>

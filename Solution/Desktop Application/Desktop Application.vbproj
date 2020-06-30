@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,6 +30,8 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -68,14 +71,14 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>506700-factory.ico</ApplicationIcon>
+    <ApplicationIcon>System\Application.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Shared.Base, Version=17.1460.0.47, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
     <Reference Include="System" />
@@ -108,57 +111,60 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ComboBox.vb">
-      <Link>CS_ComboBox.vb</Link>
+    <Compile Include="..\..\..\framework-vbnet\ComboBox.vb">
+      <Link>Framework\ComboBox.vb</Link>
     </Compile>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Constants.vb">
-      <Link>CS_Constants.vb</Link>
+    <Compile Include="..\..\..\framework-vbnet\Configuration.vb">
+      <Link>Framework\Configuration.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\framework-vbnet\Constants.vb">
+      <Link>Framework\Constants.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\framework-vbnet\Database.ADO.vb">
+      <Link>Framework\Database.ADO.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\framework-vbnet\Database.EntityFramework.vb">
+      <Link>Framework\Database.EntityFramework.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\framework-vbnet\ErrorHandler.vb">
+      <Link>Framework\ErrorHandler.vb</Link>
+    </Compile>
+    <Compile Include="..\..\..\framework-vbnet\ErrorHandlerMessageBox.designer.vb">
+      <Link>Framework\ErrorHandlerMessageBox.designer.vb</Link>
+      <DependentUpon>ErrorHandlerMessageBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\framework-vbnet\ErrorHandlerMessageBox.vb">
+      <Link>Framework\ErrorHandlerMessageBox.vb</Link>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Control_TabControl.vb">
-      <Link>CS_Control_TabControl.vb</Link>
+      <Link>Framework\CS_Control_TabControl.vb</Link>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Control_Textbox_Number.vb">
-      <Link>CS_Control_Textbox_Number.vb</Link>
+      <Link>Framework\CS_Control_Textbox_Number.vb</Link>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Database_EF_SQL.vb">
-      <Link>CS_Database_EF_SQL.vb</Link>
-    </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Parameter_System.vb">
-      <Link>CS_Parameter_System.vb</Link>
+      <Link>Framework\CS_Parameter_System.vb</Link>
     </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_String.vb">
-      <Link>CS_String.vb</Link>
+      <Link>Framework\CS_String.vb</Link>
     </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ValueTranslation.vb">
-      <Link>CS_ValueTranslation.vb</Link>
+      <Link>Framework\CS_ValueTranslation.vb</Link>
     </Compile>
     <Compile Include="Accion.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Database_SQL.vb">
-      <Link>CS_Database_SQL.vb</Link>
-    </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Encryption_TripleDES.vb">
-      <Link>CS_Encryption_TripleDES.vb</Link>
-    </Compile>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Error.vb">
-      <Link>CS_Error.vb</Link>
-    </Compile>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ErrorMessageBox.designer.vb">
-      <Link>CS_ErrorMessageBox.designer.vb</Link>
-      <DependentUpon>CS_ErrorMessageBox.vb</DependentUpon>
-    </Compile>
-    <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ErrorMessageBox.vb">
-      <Link>CS_ErrorMessageBox.vb</Link>
-      <SubType>Form</SubType>
+      <Link>Framework\CS_Encryption_TripleDES.vb</Link>
     </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Form.vb">
-      <Link>CS_Form.vb</Link>
+      <Link>Framework\CS_Form.vb</Link>
     </Compile>
     <Compile Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_Instance.vb">
-      <Link>CS_Instance.vb</Link>
+      <Link>Framework\CS_Instance.vb</Link>
     </Compile>
     <Compile Include="Clase.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
@@ -169,7 +175,15 @@
     <Compile Include="Clase_Propiedad_Lista.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Constantes.vb" />
+    <Compile Include="Config\AppearanceConfig.vb" />
+    <Compile Include="Config\Configuration.vb" />
+    <Compile Include="Config\DatabaseConfig.vb" />
+    <Compile Include="Config\EmailConfig.vb" />
+    <Compile Include="Config\GeneralConfig.vb" />
+    <Compile Include="Database\Clase_PropiedadExtension.vb" />
+    <Compile Include="Database\CSEstructuraContextExtension.vb" />
+    <Compile Include="Database\Objeto_PropiedadExtension.vb" />
+    <Compile Include="System\Constantes.vb" />
     <Compile Include="CSEstructura.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -185,57 +199,56 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFrameworkExtension.vb" />
-    <Compile Include="FillAndRefreshLists.vb" />
-    <Compile Include="formClase.Designer.vb">
+    <Compile Include="System\FillAndRefreshLists.vb" />
+    <Compile Include="Entidades\formClase.Designer.vb">
       <DependentUpon>formClase.vb</DependentUpon>
     </Compile>
-    <Compile Include="formClase.vb">
+    <Compile Include="Entidades\formClase.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formClases.Designer.vb">
+    <Compile Include="Entidades\formClases.Designer.vb">
       <DependentUpon>formClases.vb</DependentUpon>
     </Compile>
-    <Compile Include="formClases.vb">
+    <Compile Include="Entidades\formClases.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formClase_Propiedad.Designer.vb">
+    <Compile Include="Entidades\formClase_Propiedad.Designer.vb">
       <DependentUpon>formClase_Propiedad.vb</DependentUpon>
     </Compile>
-    <Compile Include="formClase_Propiedad.vb">
+    <Compile Include="Entidades\formClase_Propiedad.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formClase_Propiedad_Lista.Designer.vb">
+    <Compile Include="Entidades\formClase_Propiedad_Lista.Designer.vb">
       <DependentUpon>formClase_Propiedad_Lista.vb</DependentUpon>
     </Compile>
-    <Compile Include="formClase_Propiedad_Lista.vb">
+    <Compile Include="Entidades\formClase_Propiedad_Lista.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formMDIMain.Designer.vb">
+    <Compile Include="System\formMDIMain.Designer.vb">
       <DependentUpon>formMDIMain.vb</DependentUpon>
     </Compile>
-    <Compile Include="formMDIMain.vb">
+    <Compile Include="System\formMDIMain.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formObjetos.Designer.vb">
+    <Compile Include="Entidades\formObjetos.Designer.vb">
       <DependentUpon>formObjetos.vb</DependentUpon>
     </Compile>
-    <Compile Include="formObjetos.vb">
+    <Compile Include="Entidades\formObjetos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formObjeto_Propiedad.Designer.vb">
+    <Compile Include="Entidades\formObjeto_Propiedad.Designer.vb">
       <DependentUpon>formObjeto_Propiedad.vb</DependentUpon>
     </Compile>
-    <Compile Include="formObjeto_Propiedad.vb">
+    <Compile Include="Entidades\formObjeto_Propiedad.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formSplashScreen.Designer.vb">
+    <Compile Include="System\formSplashScreen.Designer.vb">
       <DependentUpon>formSplashScreen.vb</DependentUpon>
     </Compile>
-    <Compile Include="formSplashScreen.vb">
+    <Compile Include="System\formSplashScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MiscFunctions.vb" />
+    <Compile Include="System\MiscFunctions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -260,36 +273,36 @@
     <Compile Include="Parametro.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Parametros.vb" />
-    <Compile Include="StartUp.vb" />
+    <Compile Include="System\Parametros.vb" />
+    <Compile Include="System\StartUp.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="C:\Data\Cardoner Sistemas\Development\framework-vbnet\CS_ErrorMessageBox.resx">
-      <Link>CS_ErrorMessageBox.resx</Link>
-      <DependentUpon>CS_ErrorMessageBox.vb</DependentUpon>
+    <EmbeddedResource Include="..\..\..\framework-vbnet\ErrorHandlerMessageBox.resx">
+      <Link>Framework\ErrorHandlerMessageBox.resx</Link>
+      <DependentUpon>ErrorHandlerMessageBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formClase.resx">
+    <EmbeddedResource Include="Entidades\formClase.resx">
       <DependentUpon>formClase.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formClases.resx">
+    <EmbeddedResource Include="Entidades\formClases.resx">
       <DependentUpon>formClases.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formClase_Propiedad.resx">
+    <EmbeddedResource Include="Entidades\formClase_Propiedad.resx">
       <DependentUpon>formClase_Propiedad.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formClase_Propiedad_Lista.resx">
+    <EmbeddedResource Include="Entidades\formClase_Propiedad_Lista.resx">
       <DependentUpon>formClase_Propiedad_Lista.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formMDIMain.resx">
+    <EmbeddedResource Include="System\formMDIMain.resx">
       <DependentUpon>formMDIMain.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formObjetos.resx">
+    <EmbeddedResource Include="Entidades\formObjetos.resx">
       <DependentUpon>formObjetos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formObjeto_Propiedad.resx">
+    <EmbeddedResource Include="Entidades\formObjeto_Propiedad.resx">
       <DependentUpon>formObjeto_Propiedad.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formSplashScreen.resx">
+    <EmbeddedResource Include="System\formSplashScreen.resx">
       <DependentUpon>formSplashScreen.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
@@ -305,6 +318,18 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CSEstructura.Designer.vb</LastGenOutput>
     </EntityDeploy>
+    <None Include="Config\Appearance.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\Database.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\Email.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\General.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CSEstructura.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CSEstructura.edmx</DependentUpon>
@@ -408,7 +433,7 @@
     <None Include="Resources\Search-icon %288%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="506700-factory.ico" />
+    <Content Include="System\Application.ico" />
     <None Include="Resources\worm-gear-icon_32.png" />
     <None Include="Resources\Pink Floyd Animals.png" />
     <None Include="Resources\App256.png" />
@@ -417,6 +442,14 @@
     <None Include="Resources\506700-factory.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
