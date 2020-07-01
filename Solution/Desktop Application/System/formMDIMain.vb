@@ -88,6 +88,7 @@
 #End Region
 
 #Region "Left Toolbar - Tablas"
+
     Private Sub menuitemClases_Click(sender As Object, e As EventArgs) Handles menuitemClases.Click
         Me.Cursor = Cursors.WaitCursor
 
@@ -99,6 +100,7 @@
         formClases.Focus()
 
         Me.Cursor = Cursors.Default
+
     End Sub
 #End Region
 

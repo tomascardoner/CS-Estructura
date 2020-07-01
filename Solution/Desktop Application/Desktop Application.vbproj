@@ -169,10 +169,10 @@
     <Compile Include="Clase.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Clase_Propiedad.vb">
+    <Compile Include="ClasePropiedad.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Clase_Propiedad_Lista.vb">
+    <Compile Include="ClasePropiedadLista.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
     <Compile Include="Config\AppearanceConfig.vb" />
@@ -180,9 +180,12 @@
     <Compile Include="Config\DatabaseConfig.vb" />
     <Compile Include="Config\EmailConfig.vb" />
     <Compile Include="Config\GeneralConfig.vb" />
-    <Compile Include="Database\Clase_PropiedadExtension.vb" />
+    <Compile Include="Database\ClasePropiedadExtension.vb" />
     <Compile Include="Database\CSEstructuraContextExtension.vb" />
-    <Compile Include="Database\Objeto_PropiedadExtension.vb" />
+    <Compile Include="Database\ObjetoPropiedadExtension.vb" />
+    <Compile Include="ObjetoPropiedad.vb">
+      <DependentUpon>CSEstructura.tt</DependentUpon>
+    </Compile>
     <Compile Include="System\Constantes.vb" />
     <Compile Include="CSEstructura.Context.vb">
       <AutoGen>True</AutoGen>
@@ -212,16 +215,16 @@
     <Compile Include="Entidades\formClases.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entidades\formClase_Propiedad.Designer.vb">
-      <DependentUpon>formClase_Propiedad.vb</DependentUpon>
+    <Compile Include="Entidades\formClasePropiedad.Designer.vb">
+      <DependentUpon>formClasePropiedad.vb</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\formClase_Propiedad.vb">
+    <Compile Include="Entidades\formClasePropiedad.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entidades\formClase_Propiedad_Lista.Designer.vb">
-      <DependentUpon>formClase_Propiedad_Lista.vb</DependentUpon>
+    <Compile Include="Entidades\formClasePropiedadLista.Designer.vb">
+      <DependentUpon>formClasePropiedadLista.vb</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\formClase_Propiedad_Lista.vb">
+    <Compile Include="Entidades\formClasePropiedadLista.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="System\formMDIMain.Designer.vb">
@@ -236,10 +239,10 @@
     <Compile Include="Entidades\formObjetos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entidades\formObjeto_Propiedad.Designer.vb">
-      <DependentUpon>formObjeto_Propiedad.vb</DependentUpon>
+    <Compile Include="Entidades\formObjetoPropiedad.Designer.vb">
+      <DependentUpon>formObjetoPropiedad.vb</DependentUpon>
     </Compile>
-    <Compile Include="Entidades\formObjeto_Propiedad.vb">
+    <Compile Include="Entidades\formObjetoPropiedad.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="System\formSplashScreen.Designer.vb">
@@ -267,9 +270,6 @@
     <Compile Include="Objeto.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
-    <Compile Include="Objeto_Propiedad.vb">
-      <DependentUpon>CSEstructura.tt</DependentUpon>
-    </Compile>
     <Compile Include="Parametro.vb">
       <DependentUpon>CSEstructura.tt</DependentUpon>
     </Compile>
@@ -287,11 +287,11 @@
     <EmbeddedResource Include="Entidades\formClases.resx">
       <DependentUpon>formClases.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entidades\formClase_Propiedad.resx">
-      <DependentUpon>formClase_Propiedad.vb</DependentUpon>
+    <EmbeddedResource Include="Entidades\formClasePropiedad.resx">
+      <DependentUpon>formClasePropiedad.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entidades\formClase_Propiedad_Lista.resx">
-      <DependentUpon>formClase_Propiedad_Lista.vb</DependentUpon>
+    <EmbeddedResource Include="Entidades\formClasePropiedadLista.resx">
+      <DependentUpon>formClasePropiedadLista.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\formMDIMain.resx">
       <DependentUpon>formMDIMain.vb</DependentUpon>
@@ -299,8 +299,8 @@
     <EmbeddedResource Include="Entidades\formObjetos.resx">
       <DependentUpon>formObjetos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entidades\formObjeto_Propiedad.resx">
-      <DependentUpon>formObjeto_Propiedad.vb</DependentUpon>
+    <EmbeddedResource Include="Entidades\formObjetoPropiedad.resx">
+      <DependentUpon>formObjetoPropiedad.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="System\formSplashScreen.resx">
       <DependentUpon>formSplashScreen.vb</DependentUpon>

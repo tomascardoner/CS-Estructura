@@ -73,6 +73,7 @@
 #End Region
 
 #Region "Load and Set Data"
+
     Friend Sub SetDataFromObjectToControls()
         With mClaseActual
             ' Datos del Encabezado
@@ -101,7 +102,7 @@
             If datagridviewPropiedades.CurrentRow Is Nothing Then
                 PosicionIDPropiedad = 0
             Else
-                PosicionIDPropiedad = CType(datagridviewPropiedades.CurrentRow.DataBoundItem, Clase_Propiedad).IDPropiedad
+                PosicionIDPropiedad = CType(datagridviewPropiedades.CurrentRow.DataBoundItem, ClasePropiedad).IdPropiedad
             End If
         End If
 
@@ -109,7 +110,7 @@
 
         Try
             datagridviewPropiedades.AutoGenerateColumns = False
-            datagridviewPropiedades.DataSource = mClaseActual.Clase_Propiedad.ToList
+            datagridviewPropiedades.DataSource = mClaseActual.ClasePropiedades.ToList
 
         Catch ex As Exception
             CardonerSistemas.ErrorHandler.ProcessError(ex, "Error al leer las Propiedades de la Clase.")
@@ -121,7 +122,7 @@
 
         If PosicionIDPropiedad <> 0 Then
             For Each CurrentRowChecked As DataGridViewRow In datagridviewPropiedades.Rows
-                If CType(CurrentRowChecked.DataBoundItem, Clase_Propiedad).IDPropiedad = PosicionIDPropiedad Then
+                If CType(CurrentRowChecked.DataBoundItem, ClasePropiedad).IdPropiedad = PosicionIDPropiedad Then
                     datagridviewPropiedades.CurrentCell = CurrentRowChecked.Cells(0)
                     Exit For
                 End If
@@ -138,6 +139,7 @@
 #End Region
 
 #Region "Main Toolbar"
+
     Private Sub buttonEditar_Click() Handles buttonEditar.Click
         mEditMode = True
         ChangeMode()
@@ -215,24 +217,26 @@
             Me.Close()
         End If
     End Sub
+
 #End Region
 
 #Region "Propiedades Toolbar"
-    Private Sub Propiedades_Agregar() Handles buttonPropiedades_Agregar.Click
+
+    Private Sub PropiedadesAgregar() Handles buttonPropiedades_Agregar.Click
 
         Me.Cursor = Cursors.WaitCursor
 
         datagridviewPropiedades.Enabled = False
 
-        Dim Clase_PropiedadNueva As New Clase_Propiedad
-        formClase_Propiedad.LoadAndShow(True, True, Me, mClaseActual, Clase_PropiedadNueva)
+        Dim ClasePropiedadNueva As New ClasePropiedad
+        formClasePropiedad.LoadAndShow(True, True, Me, mClaseActual, ClasePropiedadNueva)
 
         datagridviewPropiedades.Enabled = True
 
         Me.Cursor = Cursors.Default
     End Sub
 
-    Private Sub Propiedades_Editar() Handles buttonPropiedades_Editar.Click
+    Private Sub PropiedadesEditar() Handles buttonPropiedades_Editar.Click
         If datagridviewPropiedades.CurrentRow Is Nothing Then
             MsgBox("No hay ninguna Propiedad para editar.", vbInformation, My.Application.Info.Title)
         Else
@@ -240,9 +244,9 @@
 
             datagridviewPropiedades.Enabled = False
 
-            Dim Clase_PropiedadActual As Clase_Propiedad
-            Clase_PropiedadActual = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, Clase_Propiedad)
-            formClase_Propiedad.LoadAndShow(True, True, Me, mClaseActual, Clase_PropiedadActual)
+            Dim ClasePropiedadActual As ClasePropiedad
+            ClasePropiedadActual = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, ClasePropiedad)
+            formClasePropiedad.LoadAndShow(True, True, Me, mClaseActual, ClasePropiedadActual)
 
             datagridviewPropiedades.Enabled = True
 
@@ -250,19 +254,19 @@
         End If
     End Sub
 
-    Private Sub Propiedades_Eliminar() Handles buttonPropiedades_Eliminar.Click
+    Private Sub PropiedadesEliminar() Handles buttonPropiedades_Eliminar.Click
         If datagridviewPropiedades.CurrentRow Is Nothing Then
             MsgBox("No hay ninguna Propiedad para eliminar.", vbInformation, My.Application.Info.Title)
         Else
-            Dim Clase_PropiedadEliminar As Clase_Propiedad
-            Clase_PropiedadEliminar = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, Clase_Propiedad)
+            Dim ClasePropiedadEliminar As ClasePropiedad
+            ClasePropiedadEliminar = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, ClasePropiedad)
 
             Dim Mensaje As String
-            Mensaje = String.Format("Se eliminará la Propiedad seleccionada.{0}{0}Nombre: {1}{0}{0}¿Confirma la eliminación definitiva?", vbCrLf, Clase_PropiedadEliminar.Nombre)
+            Mensaje = String.Format("Se eliminará la Propiedad seleccionada.{0}{0}Nombre: {1}{0}{0}¿Confirma la eliminación definitiva?", vbCrLf, ClasePropiedadEliminar.Nombre)
             If MsgBox(Mensaje, CType(MsgBoxStyle.Exclamation + MsgBoxStyle.YesNo, MsgBoxStyle), My.Application.Info.Title) = MsgBoxResult.Yes Then
                 Me.Cursor = Cursors.WaitCursor
 
-                mClaseActual.Clase_Propiedad.Remove(Clase_PropiedadEliminar)
+                mClaseActual.ClasePropiedades.Remove(ClasePropiedadEliminar)
 
                 RefreshData_Propiedades()
 
@@ -279,9 +283,9 @@
 
             datagridviewPropiedades.Enabled = False
 
-            Dim Clase_PropiedadActual As Clase_Propiedad
-            Clase_PropiedadActual = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, Clase_Propiedad)
-            formClase_Propiedad.LoadAndShow(mEditMode, False, Me, mClaseActual, Clase_PropiedadActual)
+            Dim ClasePropiedadActual As ClasePropiedad
+            ClasePropiedadActual = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, ClasePropiedad)
+            formClasePropiedad.LoadAndShow(mEditMode, False, Me, mClaseActual, ClasePropiedadActual)
 
             datagridviewPropiedades.Enabled = True
 

@@ -24,10 +24,10 @@ Partial Public Class CSEstructuraContext
 
     Public Overridable Property Accion() As DbSet(Of Accion)
     Public Overridable Property Clase() As DbSet(Of Clase)
+    Public Overridable Property ClasePropiedad() As DbSet(Of ClasePropiedad)
+    Public Overridable Property ClasePropiedadLista() As DbSet(Of ClasePropiedadLista)
     Public Overridable Property Objeto() As DbSet(Of Objeto)
+    Public Overridable Property ObjetoPropiedad() As DbSet(Of ObjetoPropiedad)
     Public Overridable Property Parametro() As DbSet(Of Parametro)
-    Public Overridable Property Clase_Propiedad() As DbSet(Of Clase_Propiedad)
-    Public Overridable Property Clase_Propiedad_Lista() As DbSet(Of Clase_Propiedad_Lista)
-    Public Overridable Property Objeto_Propiedad() As DbSet(Of Objeto_Propiedad)
 
 End Class

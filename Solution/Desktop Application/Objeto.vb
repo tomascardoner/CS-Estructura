@@ -11,17 +11,16 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Objeto
-    Public Property IDObjeto As Short
-    Public Property IDObjeto_Padre As Nullable(Of Short)
+    Public Property IdObjeto As Short
+    Public Property IdObjetoPadre As Nullable(Of Short)
     Public Property Nombre As String
-    Public Property IDClase As Nullable(Of Short)
-    Public Property EsActivo As Boolean
+    Public Property IdClase As Nullable(Of Short)
     Public Property Notas As String
+    Public Property EsActivo As Boolean
 
-    Public Overridable Property Accion As ICollection(Of Accion) = New HashSet(Of Accion)
-    Public Overridable Property Objeto_Padre As ICollection(Of Objeto) = New HashSet(Of Objeto)
-    Public Overridable Property Objeto_Hijos As Objeto
     Public Overridable Property Clase As Clase
-    Public Overridable Property Objeto_Propiedades As ICollection(Of Objeto_Propiedad) = New HashSet(Of Objeto_Propiedad)
+    Public Overridable Property ObjetosHijos As ICollection(Of Objeto) = New HashSet(Of Objeto)
+    Public Overridable Property ObjetoPadre As Objeto
+    Public Overridable Property ObjetoPropiedades As ICollection(Of ObjetoPropiedad) = New HashSet(Of ObjetoPropiedad)
 
 End Class

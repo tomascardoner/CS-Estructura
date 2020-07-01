@@ -196,6 +196,7 @@
 #End Region
 
 #Region "Main Toolbar"
+
     Private Sub Agregar_Click() Handles buttonAgregar.Click
         Me.Cursor = Cursors.WaitCursor
 

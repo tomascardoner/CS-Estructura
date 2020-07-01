@@ -5,20 +5,19 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="1125a90a4f254e81a7c72e50691ae5db" Name="Diagram1">
-        <EntityTypeShape EntityType="CSEstructuraModel.Accion" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CSEstructuraModel.Clase" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CSEstructuraModel.Objeto" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Objeto__Accion" ManuallyRouted="false" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Objeto__Objeto" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="CSEstructuraModel.Parametro" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="CSEstructuraModel.Clase_Propiedad" Width="1.875" PointX="3" PointY="10.75" />
-        <EntityTypeShape EntityType="CSEstructuraModel.Clase_Propiedad_Lista" Width="1.625" PointX="5.625" PointY="10.875" />
-        <EntityTypeShape EntityType="CSEstructuraModel.Objeto_Propiedad" Width="1.75" PointX="5" PointY="6" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Objeto_Dato__Accion1" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Clase__Objeto" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Clase__Propiedad_Clase" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Clase_Propiedad__Clase_Propiedad_Lista" />
-        <AssociationConnector Association="CSEstructuraModel.FK__Objeto__Objeto_Propiedad" />
+        <EntityTypeShape EntityType="CSEstructuraModel.Accion" Width="1.5" PointX="8" PointY="4.375" />
+        <EntityTypeShape EntityType="CSEstructuraModel.Clase" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="CSEstructuraModel.ClasePropiedad" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="CSEstructuraModel.ClasePropiedadLista" Width="1.5" PointX="5.25" PointY="1.25" />
+        <EntityTypeShape EntityType="CSEstructuraModel.Objeto" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="CSEstructuraModel.ObjetoPropiedad" Width="1.875" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="CSEstructuraModel.Parametro" Width="1.5" PointX="7.75" PointY="0.75" />
+        <AssociationConnector Association="CSEstructuraModel.FK_ObjetoPropiedad_Accion" />
+        <AssociationConnector Association="CSEstructuraModel.FK_Clase_Objeto" />
+        <AssociationConnector Association="CSEstructuraModel.FK_Clase_PropiedadClase" />
+        <AssociationConnector Association="CSEstructuraModel.FK_ClasePropiedad_ClasePropiedadLista" />
+        <AssociationConnector Association="CSEstructuraModel.FK_Objeto_Objeto" />
+        <AssociationConnector Association="CSEstructuraModel.FK_Objeto_ObjetoPropiedad" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,70 +7,70 @@
     <Schema Namespace="CSEstructuraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Accion">
           <Key>
-            <PropertyRef Name="IDAccion" />
+            <PropertyRef Name="IdAccion" />
           </Key>
-          <Property Name="IDAccion" Type="int" Nullable="false" />
-          <Property Name="IDObjeto" Type="smallint" Nullable="false" />
-          <Property Name="IDDato" Type="smallint" />
+          <Property Name="IdAccion" Type="int" Nullable="false" />
+          <Property Name="IdObjeto" Type="smallint" Nullable="false" />
+          <Property Name="IdDato" Type="smallint" />
           <Property Name="Fecha" Type="date" Nullable="false" />
           <Property Name="Tipo" Type="char" MaxLength="1" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="8000" />
+          <Property Name="Descripcion" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Clase">
           <Key>
-            <PropertyRef Name="IDClase" />
+            <PropertyRef Name="IdClase" />
           </Key>
-          <Property Name="IDClase" Type="smallint" Nullable="false" />
+          <Property Name="IdClase" Type="smallint" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="EsActivo" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Clase_Propiedad">
+        <EntityType Name="ClasePropiedad">
           <Key>
-            <PropertyRef Name="IDClase" />
-            <PropertyRef Name="IDPropiedad" />
+            <PropertyRef Name="IdClase" />
+            <PropertyRef Name="IdPropiedad" />
           </Key>
-          <Property Name="IDClase" Type="smallint" Nullable="false" />
-          <Property Name="IDPropiedad" Type="smallint" Nullable="false" />
+          <Property Name="IdClase" Type="smallint" Nullable="false" />
+          <Property Name="IdPropiedad" Type="smallint" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="TipoDato" Type="char" MaxLength="2" Nullable="false" />
-          <Property Name="TipoDato_IDClase" Type="smallint" />
+          <Property Name="TipoDatoIdClase" Type="smallint" />
         </EntityType>
-        <EntityType Name="Clase_Propiedad_Lista">
+        <EntityType Name="ClasePropiedadLista">
           <Key>
-            <PropertyRef Name="IDClase" />
-            <PropertyRef Name="IDPropiedad" />
-            <PropertyRef Name="IDLista" />
+            <PropertyRef Name="IdClase" />
+            <PropertyRef Name="IdPropiedad" />
+            <PropertyRef Name="IdLista" />
           </Key>
-          <Property Name="IDClase" Type="smallint" Nullable="false" />
-          <Property Name="IDPropiedad" Type="smallint" Nullable="false" />
-          <Property Name="IDLista" Type="smallint" Nullable="false" />
+          <Property Name="IdClase" Type="smallint" Nullable="false" />
+          <Property Name="IdPropiedad" Type="smallint" Nullable="false" />
+          <Property Name="IdLista" Type="smallint" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="EsActivo" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Objeto">
           <Key>
-            <PropertyRef Name="IDObjeto" />
+            <PropertyRef Name="IdObjeto" />
           </Key>
-          <Property Name="IDObjeto" Type="smallint" Nullable="false" />
-          <Property Name="IDObjeto_Padre" Type="smallint" />
+          <Property Name="IdObjeto" Type="smallint" Nullable="false" />
+          <Property Name="IdObjetoPadre" Type="smallint" />
           <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="IDClase" Type="smallint" />
+          <Property Name="IdClase" Type="smallint" />
           <Property Name="Notas" Type="varchar(max)" />
           <Property Name="EsActivo" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="Objeto_Propiedad">
+        <EntityType Name="ObjetoPropiedad">
           <Key>
-            <PropertyRef Name="IDObjeto" />
-            <PropertyRef Name="IDPropiedad" />
+            <PropertyRef Name="IdObjeto" />
+            <PropertyRef Name="IdPropiedad" />
           </Key>
-          <Property Name="IDObjeto" Type="smallint" Nullable="false" />
-          <Property Name="IDPropiedad" Type="smallint" Nullable="false" />
-          <Property Name="Valor_Texto" Type="nvarchar" MaxLength="4000" />
-          <Property Name="Valor_NumeroEntero" Type="int" />
-          <Property Name="Valor_NumeroDecimal" Type="decimal" Precision="18" Scale="6" />
-          <Property Name="Valor_FechaHora" Type="smalldatetime" />
-          <Property Name="Valor_SiNo" Type="bit" />
-          <Property Name="Valor_Lista" Type="smallint" />
+          <Property Name="IdObjeto" Type="smallint" Nullable="false" />
+          <Property Name="IdPropiedad" Type="smallint" Nullable="false" />
+          <Property Name="ValorTexto" Type="nvarchar(max)" />
+          <Property Name="ValorNumeroEntero" Type="int" />
+          <Property Name="ValorNumeroDecimal" Type="decimal" Precision="18" Scale="9" />
+          <Property Name="ValorFechaHora" Type="datetime" />
+          <Property Name="ValorSiNo" Type="bit" />
+          <Property Name="ValorLista" Type="smallint" />
         </EntityType>
         <EntityType Name="Parametro">
           <Key>
@@ -85,128 +85,112 @@
           <Property Name="SiNo" Type="bit" />
           <Property Name="Notas" Type="varchar(max)" />
         </EntityType>
-        <Association Name="FK__Clase__Objeto">
+        <Association Name="FK_Clase_Objeto">
           <End Role="Clase" Type="Self.Clase" Multiplicity="0..1" />
           <End Role="Objeto" Type="Self.Objeto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clase">
-              <PropertyRef Name="IDClase" />
+              <PropertyRef Name="IdClase" />
             </Principal>
             <Dependent Role="Objeto">
-              <PropertyRef Name="IDClase" />
+              <PropertyRef Name="IdClase" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clase__Propiedad_Clase">
+        <Association Name="FK_Clase_PropiedadClase">
           <End Role="Clase" Type="Self.Clase" Multiplicity="1" />
-          <End Role="Clase_Propiedad" Type="Self.Clase_Propiedad" Multiplicity="*" />
+          <End Role="ClasePropiedad" Type="Self.ClasePropiedad" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clase">
-              <PropertyRef Name="IDClase" />
+              <PropertyRef Name="IdClase" />
             </Principal>
-            <Dependent Role="Clase_Propiedad">
-              <PropertyRef Name="IDClase" />
+            <Dependent Role="ClasePropiedad">
+              <PropertyRef Name="IdClase" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clase_Propiedad__Clase_Propiedad_Lista">
-          <End Role="Clase_Propiedad" Type="Self.Clase_Propiedad" Multiplicity="1" />
-          <End Role="Clase_Propiedad_Lista" Type="Self.Clase_Propiedad_Lista" Multiplicity="*" />
+        <Association Name="FK_ClasePropiedad_ClasePropiedadLista">
+          <End Role="ClasePropiedad" Type="Self.ClasePropiedad" Multiplicity="1" />
+          <End Role="ClasePropiedadLista" Type="Self.ClasePropiedadLista" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clase_Propiedad">
-              <PropertyRef Name="IDClase" />
-              <PropertyRef Name="IDPropiedad" />
+            <Principal Role="ClasePropiedad">
+              <PropertyRef Name="IdClase" />
+              <PropertyRef Name="IdPropiedad" />
             </Principal>
-            <Dependent Role="Clase_Propiedad_Lista">
-              <PropertyRef Name="IDClase" />
-              <PropertyRef Name="IDPropiedad" />
+            <Dependent Role="ClasePropiedadLista">
+              <PropertyRef Name="IdClase" />
+              <PropertyRef Name="IdPropiedad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Objeto__Accion">
-          <End Role="Objeto" Type="Self.Objeto" Multiplicity="1" />
-          <End Role="Accion" Type="Self.Accion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Objeto">
-              <PropertyRef Name="IDObjeto" />
-            </Principal>
-            <Dependent Role="Accion">
-              <PropertyRef Name="IDObjeto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Objeto__Objeto">
+        <Association Name="FK_Objeto_Objeto">
           <End Role="Objeto" Type="Self.Objeto" Multiplicity="0..1" />
           <End Role="Objeto1" Type="Self.Objeto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Objeto">
-              <PropertyRef Name="IDObjeto" />
+              <PropertyRef Name="IdObjeto" />
             </Principal>
             <Dependent Role="Objeto1">
-              <PropertyRef Name="IDObjeto_Padre" />
+              <PropertyRef Name="IdObjetoPadre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Objeto__Objeto_Propiedad">
+        <Association Name="FK_Objeto_ObjetoPropiedad">
           <End Role="Objeto" Type="Self.Objeto" Multiplicity="1" />
-          <End Role="Objeto_Propiedad" Type="Self.Objeto_Propiedad" Multiplicity="*" />
+          <End Role="ObjetoPropiedad" Type="Self.ObjetoPropiedad" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Objeto">
-              <PropertyRef Name="IDObjeto" />
+              <PropertyRef Name="IdObjeto" />
             </Principal>
-            <Dependent Role="Objeto_Propiedad">
-              <PropertyRef Name="IDObjeto" />
+            <Dependent Role="ObjetoPropiedad">
+              <PropertyRef Name="IdObjeto" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Objeto_Dato__Accion">
-          <End Role="Objeto_Propiedad" Type="Self.Objeto_Propiedad" Multiplicity="0..1" />
+        <Association Name="FK_ObjetoPropiedad_Accion">
+          <End Role="ObjetoPropiedad" Type="Self.ObjetoPropiedad" Multiplicity="0..1" />
           <End Role="Accion" Type="Self.Accion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Objeto_Propiedad">
-              <PropertyRef Name="IDObjeto" />
-              <PropertyRef Name="IDPropiedad" />
+            <Principal Role="ObjetoPropiedad">
+              <PropertyRef Name="IdObjeto" />
+              <PropertyRef Name="IdPropiedad" />
             </Principal>
             <Dependent Role="Accion">
-              <PropertyRef Name="IDObjeto" />
-              <PropertyRef Name="IDDato" />
+              <PropertyRef Name="IdObjeto" />
+              <PropertyRef Name="IdDato" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CSEstructuraModelStoreContainer">
           <EntitySet Name="Accion" EntityType="Self.Accion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clase" EntityType="Self.Clase" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Clase_Propiedad" EntityType="Self.Clase_Propiedad" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Clase_Propiedad_Lista" EntityType="Self.Clase_Propiedad_Lista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClasePropiedad" EntityType="Self.ClasePropiedad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClasePropiedadLista" EntityType="Self.ClasePropiedadLista" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Objeto" EntityType="Self.Objeto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Objeto_Propiedad" EntityType="Self.Objeto_Propiedad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjetoPropiedad" EntityType="Self.ObjetoPropiedad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parametro" EntityType="Self.Parametro" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Clase__Objeto" Association="Self.FK__Clase__Objeto">
+          <AssociationSet Name="FK_Clase_Objeto" Association="Self.FK_Clase_Objeto">
             <End Role="Clase" EntitySet="Clase" />
             <End Role="Objeto" EntitySet="Objeto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Clase__Propiedad_Clase" Association="Self.FK__Clase__Propiedad_Clase">
+          <AssociationSet Name="FK_Clase_PropiedadClase" Association="Self.FK_Clase_PropiedadClase">
             <End Role="Clase" EntitySet="Clase" />
-            <End Role="Clase_Propiedad" EntitySet="Clase_Propiedad" />
+            <End Role="ClasePropiedad" EntitySet="ClasePropiedad" />
           </AssociationSet>
-          <AssociationSet Name="FK__Clase_Propiedad__Clase_Propiedad_Lista" Association="Self.FK__Clase_Propiedad__Clase_Propiedad_Lista">
-            <End Role="Clase_Propiedad" EntitySet="Clase_Propiedad" />
-            <End Role="Clase_Propiedad_Lista" EntitySet="Clase_Propiedad_Lista" />
+          <AssociationSet Name="FK_ClasePropiedad_ClasePropiedadLista" Association="Self.FK_ClasePropiedad_ClasePropiedadLista">
+            <End Role="ClasePropiedad" EntitySet="ClasePropiedad" />
+            <End Role="ClasePropiedadLista" EntitySet="ClasePropiedadLista" />
           </AssociationSet>
-          <AssociationSet Name="FK__Objeto__Accion" Association="Self.FK__Objeto__Accion">
-            <End Role="Objeto" EntitySet="Objeto" />
-            <End Role="Accion" EntitySet="Accion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Objeto__Objeto" Association="Self.FK__Objeto__Objeto">
+          <AssociationSet Name="FK_Objeto_Objeto" Association="Self.FK_Objeto_Objeto">
             <End Role="Objeto" EntitySet="Objeto" />
             <End Role="Objeto1" EntitySet="Objeto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Objeto__Objeto_Propiedad" Association="Self.FK__Objeto__Objeto_Propiedad">
+          <AssociationSet Name="FK_Objeto_ObjetoPropiedad" Association="Self.FK_Objeto_ObjetoPropiedad">
             <End Role="Objeto" EntitySet="Objeto" />
-            <End Role="Objeto_Propiedad" EntitySet="Objeto_Propiedad" />
+            <End Role="ObjetoPropiedad" EntitySet="ObjetoPropiedad" />
           </AssociationSet>
-          <AssociationSet Name="FK__Objeto_Dato__Accion" Association="Self.FK__Objeto_Dato__Accion">
-            <End Role="Objeto_Propiedad" EntitySet="Objeto_Propiedad" />
+          <AssociationSet Name="FK_ObjetoPropiedad_Accion" Association="Self.FK_ObjetoPropiedad_Accion">
+            <End Role="ObjetoPropiedad" EntitySet="ObjetoPropiedad" />
             <End Role="Accion" EntitySet="Accion" />
           </AssociationSet>
         </EntityContainer>
@@ -214,106 +198,118 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CSEstructuraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Accion">
-          <Key>
-            <PropertyRef Name="IDAccion" />
-          </Key>
-          <Property Name="IDAccion" Type="Int32" Nullable="false" />
-          <Property Name="IDObjeto" Type="Int16" Nullable="false" />
-          <Property Name="IDDato" Type="Int16" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Tipo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Objeto" Relationship="Self.FK__Objeto__Accion" FromRole="Accion" ToRole="Objeto" />
-          <NavigationProperty Name="Objeto_Propiedad" Relationship="CSEstructuraModel.FK__Objeto_Dato__Accion1" FromRole="Accion" ToRole="Objeto_Propiedad" />
-        </EntityType>
-        <EntityType Name="Clase">
-          <Key>
-            <PropertyRef Name="IDClase" />
-          </Key>
-          <Property Name="IDClase" Type="Int16" Nullable="false" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Objeto" Relationship="CSEstructuraModel.FK__Clase__Objeto" FromRole="Clase" ToRole="Objeto" />
-          <NavigationProperty Name="Clase_Propiedad" Relationship="CSEstructuraModel.FK__Clase__Propiedad_Clase" FromRole="Clase" ToRole="Clase_Propiedad" />
-          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Objeto">
-          <Key>
-            <PropertyRef Name="IDObjeto" />
-          </Key>
-          <Property Name="IDObjeto" Type="Int16" Nullable="false" />
-          <Property Name="IDObjeto_Padre" Type="Int16" />
-          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="IDClase" Type="Int16" />
-          <NavigationProperty Name="Accion" Relationship="Self.FK__Objeto__Accion" FromRole="Objeto" ToRole="Accion" />
-          <NavigationProperty Name="Objeto_Padre" Relationship="Self.FK__Objeto__Objeto" FromRole="Objeto" ToRole="Objeto1" />
-          <NavigationProperty Name="Objeto_Hijos" Relationship="Self.FK__Objeto__Objeto" FromRole="Objeto1" ToRole="Objeto" />
-          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
-          <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Clase" Relationship="CSEstructuraModel.FK__Clase__Objeto" FromRole="Objeto" ToRole="Clase" />
-          <NavigationProperty Name="Objeto_Propiedades" Relationship="CSEstructuraModel.FK__Objeto__Objeto_Propiedad" FromRole="Objeto" ToRole="Objeto_Propiedad" />
-        </EntityType>
-        <Association Name="FK__Objeto__Accion">
-          <End Role="Objeto" Type="Self.Objeto" Multiplicity="1" />
-          <End Role="Accion" Type="Self.Accion" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Objeto">
-              <PropertyRef Name="IDObjeto" />
-            </Principal>
-            <Dependent Role="Accion">
-              <PropertyRef Name="IDObjeto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Objeto__Objeto">
-          <End Role="Objeto" Type="Self.Objeto" Multiplicity="0..1" />
-          <End Role="Objeto1" Type="Self.Objeto" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Objeto">
-              <PropertyRef Name="IDObjeto" />
-            </Principal>
-            <Dependent Role="Objeto1">
-              <PropertyRef Name="IDObjeto_Padre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="CSEstructuraContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Accion" EntityType="Self.Accion" />
-          <EntitySet Name="Clase" EntityType="Self.Clase" />
-          <EntitySet Name="Objeto" EntityType="Self.Objeto" />
-          <AssociationSet Name="FK__Objeto__Accion" Association="Self.FK__Objeto__Accion">
-            <End Role="Objeto" EntitySet="Objeto" />
+          <EntitySet Name="Accion" EntityType="CSEstructuraModel.Accion" />
+          <EntitySet Name="Clase" EntityType="CSEstructuraModel.Clase" />
+          <EntitySet Name="ClasePropiedad" EntityType="CSEstructuraModel.ClasePropiedad" />
+          <EntitySet Name="ClasePropiedadLista" EntityType="CSEstructuraModel.ClasePropiedadLista" />
+          <EntitySet Name="Objeto" EntityType="CSEstructuraModel.Objeto" />
+          <EntitySet Name="ObjetoPropiedad" EntityType="CSEstructuraModel.ObjetoPropiedad" />
+          <EntitySet Name="Parametro" EntityType="CSEstructuraModel.Parametro" />
+          <AssociationSet Name="FK_ObjetoPropiedad_Accion" Association="CSEstructuraModel.FK_ObjetoPropiedad_Accion">
+            <End Role="ObjetoPropiedad" EntitySet="ObjetoPropiedad" />
             <End Role="Accion" EntitySet="Accion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Objeto__Objeto" Association="Self.FK__Objeto__Objeto">
+          <AssociationSet Name="FK_Clase_Objeto" Association="CSEstructuraModel.FK_Clase_Objeto">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="Objeto" EntitySet="Objeto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clase_PropiedadClase" Association="CSEstructuraModel.FK_Clase_PropiedadClase">
+            <End Role="Clase" EntitySet="Clase" />
+            <End Role="ClasePropiedad" EntitySet="ClasePropiedad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClasePropiedad_ClasePropiedadLista" Association="CSEstructuraModel.FK_ClasePropiedad_ClasePropiedadLista">
+            <End Role="ClasePropiedad" EntitySet="ClasePropiedad" />
+            <End Role="ClasePropiedadLista" EntitySet="ClasePropiedadLista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Objeto_Objeto" Association="CSEstructuraModel.FK_Objeto_Objeto">
             <End Role="Objeto" EntitySet="Objeto" />
             <End Role="Objeto1" EntitySet="Objeto" />
           </AssociationSet>
-          <EntitySet Name="Parametro" EntityType="CSEstructuraModel.Parametro" />
-          <EntitySet Name="Clase_Propiedad" EntityType="CSEstructuraModel.Clase_Propiedad" />
-          <EntitySet Name="Clase_Propiedad_Lista" EntityType="CSEstructuraModel.Clase_Propiedad_Lista" />
-          <EntitySet Name="Objeto_Propiedad" EntityType="CSEstructuraModel.Objeto_Propiedad" />
-          <AssociationSet Name="FK__Objeto_Dato__Accion1" Association="CSEstructuraModel.FK__Objeto_Dato__Accion1">
-            <End Role="Objeto_Propiedad" EntitySet="Objeto_Propiedad" />
-            <End Role="Accion" EntitySet="Accion" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Clase__Objeto" Association="CSEstructuraModel.FK__Clase__Objeto">
-            <End Role="Clase" EntitySet="Clase" />
+          <AssociationSet Name="FK_Objeto_ObjetoPropiedad" Association="CSEstructuraModel.FK_Objeto_ObjetoPropiedad">
             <End Role="Objeto" EntitySet="Objeto" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Clase__Propiedad_Clase" Association="CSEstructuraModel.FK__Clase__Propiedad_Clase">
-            <End Role="Clase" EntitySet="Clase" />
-            <End Role="Clase_Propiedad" EntitySet="Clase_Propiedad" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Clase_Propiedad__Clase_Propiedad_Lista" Association="CSEstructuraModel.FK__Clase_Propiedad__Clase_Propiedad_Lista">
-            <End Role="Clase_Propiedad" EntitySet="Clase_Propiedad" />
-            <End Role="Clase_Propiedad_Lista" EntitySet="Clase_Propiedad_Lista" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Objeto__Objeto_Propiedad" Association="CSEstructuraModel.FK__Objeto__Objeto_Propiedad">
-            <End Role="Objeto" EntitySet="Objeto" />
-            <End Role="Objeto_Propiedad" EntitySet="Objeto_Propiedad" />
+            <End Role="ObjetoPropiedad" EntitySet="ObjetoPropiedad" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Accion">
+          <Key>
+            <PropertyRef Name="IdAccion" />
+          </Key>
+          <Property Name="IdAccion" Type="Int32" Nullable="false" />
+          <Property Name="IdObjeto" Type="Int16" Nullable="false" />
+          <Property Name="IdDato" Type="Int16" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tipo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ObjetoPropiedad" Relationship="CSEstructuraModel.FK_ObjetoPropiedad_Accion" FromRole="Accion" ToRole="ObjetoPropiedad" />
+        </EntityType>
+        <EntityType Name="Clase">
+          <Key>
+            <PropertyRef Name="IdClase" />
+          </Key>
+          <Property Name="IdClase" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Objetos" Relationship="CSEstructuraModel.FK_Clase_Objeto" FromRole="Clase" ToRole="Objeto" />
+          <NavigationProperty Name="ClasePropiedades" Relationship="CSEstructuraModel.FK_Clase_PropiedadClase" FromRole="Clase" ToRole="ClasePropiedad" />
+        </EntityType>
+        <EntityType Name="ClasePropiedad">
+          <Key>
+            <PropertyRef Name="IdClase" />
+            <PropertyRef Name="IdPropiedad" />
+          </Key>
+          <Property Name="IdClase" Type="Int16" Nullable="false" />
+          <Property Name="IdPropiedad" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoDato" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Clase" Relationship="CSEstructuraModel.FK_Clase_PropiedadClase" FromRole="ClasePropiedad" ToRole="Clase" />
+          <NavigationProperty Name="ClasePropiedadesLista" Relationship="CSEstructuraModel.FK_ClasePropiedad_ClasePropiedadLista" FromRole="ClasePropiedad" ToRole="ClasePropiedadLista" />
+          <Property Name="TipoDatoIdClase" Type="Int16" />
+        </EntityType>
+        <EntityType Name="ClasePropiedadLista">
+          <Key>
+            <PropertyRef Name="IdClase" />
+            <PropertyRef Name="IdPropiedad" />
+            <PropertyRef Name="IdLista" />
+          </Key>
+          <Property Name="IdClase" Type="Int16" Nullable="false" />
+          <Property Name="IdPropiedad" Type="Int16" Nullable="false" />
+          <Property Name="IdLista" Type="Int16" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ClasePropiedad" Relationship="CSEstructuraModel.FK_ClasePropiedad_ClasePropiedadLista" FromRole="ClasePropiedadLista" ToRole="ClasePropiedad" />
+        </EntityType>
+        <EntityType Name="Objeto">
+          <Key>
+            <PropertyRef Name="IdObjeto" />
+          </Key>
+          <Property Name="IdObjeto" Type="Int16" Nullable="false" />
+          <Property Name="IdObjetoPadre" Type="Int16" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdClase" Type="Int16" />
+          <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Clase" Relationship="CSEstructuraModel.FK_Clase_Objeto" FromRole="Objeto" ToRole="Clase" />
+          <NavigationProperty Name="ObjetosHijos" Relationship="CSEstructuraModel.FK_Objeto_Objeto" FromRole="Objeto" ToRole="Objeto1" />
+          <NavigationProperty Name="ObjetoPadre" Relationship="CSEstructuraModel.FK_Objeto_Objeto" FromRole="Objeto1" ToRole="Objeto" />
+          <NavigationProperty Name="ObjetoPropiedades" Relationship="CSEstructuraModel.FK_Objeto_ObjetoPropiedad" FromRole="Objeto" ToRole="ObjetoPropiedad" />
+        </EntityType>
+        <EntityType Name="ObjetoPropiedad">
+          <Key>
+            <PropertyRef Name="IdObjeto" />
+            <PropertyRef Name="IdPropiedad" />
+          </Key>
+          <Property Name="IdObjeto" Type="Int16" Nullable="false" />
+          <Property Name="IdPropiedad" Type="Int16" Nullable="false" />
+          <Property Name="ValorTexto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ValorNumeroEntero" Type="Int32" />
+          <Property Name="ValorNumeroDecimal" Type="Decimal" Precision="18" Scale="9" />
+          <Property Name="ValorFechaHora" Type="DateTime" Precision="3" />
+          <Property Name="ValorSiNo" Type="Boolean" />
+          <Property Name="ValorLista" Type="Int16" />
+          <NavigationProperty Name="Acciones" Relationship="CSEstructuraModel.FK_ObjetoPropiedad_Accion" FromRole="ObjetoPropiedad" ToRole="Accion" />
+          <NavigationProperty Name="Objeto" Relationship="CSEstructuraModel.FK_Objeto_ObjetoPropiedad" FromRole="ObjetoPropiedad" ToRole="Objeto" />
+        </EntityType>
         <EntityType Name="Parametro">
           <Key>
             <PropertyRef Name="IDParametro" />
@@ -327,113 +323,83 @@
           <Property Name="SiNo" Type="Boolean" />
           <Property Name="Notas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Clase_Propiedad">
-          <Key>
-            <PropertyRef Name="IDClase" />
-            <PropertyRef Name="IDPropiedad" />
-          </Key>
-          <Property Name="IDClase" Type="Int16" Nullable="false" />
-          <Property Name="IDPropiedad" Type="Int16" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="TipoDato" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="TipoDato_IDClase" Type="Int16" />
-          <NavigationProperty Name="Clase" Relationship="CSEstructuraModel.FK__Clase__Propiedad_Clase" FromRole="Clase_Propiedad" ToRole="Clase" />
-          <NavigationProperty Name="Clase_Propiedad_Lista" Relationship="CSEstructuraModel.FK__Clase_Propiedad__Clase_Propiedad_Lista" FromRole="Clase_Propiedad" ToRole="Clase_Propiedad_Lista" />
-        </EntityType>
-        <EntityType Name="Clase_Propiedad_Lista">
-          <Key>
-            <PropertyRef Name="IDClase" />
-            <PropertyRef Name="IDPropiedad" />
-            <PropertyRef Name="IDLista" />
-          </Key>
-          <Property Name="IDClase" Type="Int16" Nullable="false" />
-          <Property Name="IDPropiedad" Type="Int16" Nullable="false" />
-          <Property Name="IDLista" Type="Int16" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Clase_Propiedad" Relationship="CSEstructuraModel.FK__Clase_Propiedad__Clase_Propiedad_Lista" FromRole="Clase_Propiedad_Lista" ToRole="Clase_Propiedad" />
-          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Objeto_Propiedad">
-          <Key>
-            <PropertyRef Name="IDObjeto" />
-            <PropertyRef Name="IDPropiedad" />
-          </Key>
-          <Property Name="IDObjeto" Type="Int16" Nullable="false" />
-          <Property Name="IDPropiedad" Type="Int16" Nullable="false" />
-          <Property Name="Valor_Texto" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Valor_NumeroEntero" Type="Int32" />
-          <Property Name="Valor_NumeroDecimal" Type="Decimal" Precision="18" Scale="6" />
-          <Property Name="Valor_FechaHora" Type="DateTime" Precision="0" />
-          <Property Name="Valor_SiNo" Type="Boolean" />
-          <Property Name="Valor_Lista" Type="Int16" />
-          <NavigationProperty Name="Accion" Relationship="CSEstructuraModel.FK__Objeto_Dato__Accion1" FromRole="Objeto_Propiedad" ToRole="Accion" />
-          <NavigationProperty Name="Objeto" Relationship="CSEstructuraModel.FK__Objeto__Objeto_Propiedad" FromRole="Objeto_Propiedad" ToRole="Objeto" />
-        </EntityType>
-        <Association Name="FK__Objeto_Dato__Accion1">
-          <End Type="CSEstructuraModel.Objeto_Propiedad" Role="Objeto_Propiedad" Multiplicity="0..1" />
+        <Association Name="FK_ObjetoPropiedad_Accion">
+          <End Type="CSEstructuraModel.ObjetoPropiedad" Role="ObjetoPropiedad" Multiplicity="0..1" />
           <End Type="CSEstructuraModel.Accion" Role="Accion" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Objeto_Propiedad">
-              <PropertyRef Name="IDObjeto" />
-              <PropertyRef Name="IDPropiedad" />
+            <Principal Role="ObjetoPropiedad">
+              <PropertyRef Name="IdObjeto" />
+              <PropertyRef Name="IdPropiedad" />
             </Principal>
             <Dependent Role="Accion">
-              <PropertyRef Name="IDObjeto" />
-              <PropertyRef Name="IDDato" />
+              <PropertyRef Name="IdObjeto" />
+              <PropertyRef Name="IdDato" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clase__Objeto">
+        <Association Name="FK_Clase_Objeto">
           <End Type="CSEstructuraModel.Clase" Role="Clase" Multiplicity="0..1" />
           <End Type="CSEstructuraModel.Objeto" Role="Objeto" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clase">
-              <PropertyRef Name="IDClase" />
+              <PropertyRef Name="IdClase" />
             </Principal>
             <Dependent Role="Objeto">
-              <PropertyRef Name="IDClase" />
+              <PropertyRef Name="IdClase" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clase__Propiedad_Clase">
+        <Association Name="FK_Clase_PropiedadClase">
           <End Type="CSEstructuraModel.Clase" Role="Clase" Multiplicity="1" />
-          <End Type="CSEstructuraModel.Clase_Propiedad" Role="Clase_Propiedad" Multiplicity="*" />
+          <End Type="CSEstructuraModel.ClasePropiedad" Role="ClasePropiedad" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Clase">
-              <PropertyRef Name="IDClase" />
+              <PropertyRef Name="IdClase" />
             </Principal>
-            <Dependent Role="Clase_Propiedad">
-              <PropertyRef Name="IDClase" />
+            <Dependent Role="ClasePropiedad">
+              <PropertyRef Name="IdClase" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Clase_Propiedad__Clase_Propiedad_Lista">
-          <End Type="CSEstructuraModel.Clase_Propiedad" Role="Clase_Propiedad" Multiplicity="1" />
-          <End Type="CSEstructuraModel.Clase_Propiedad_Lista" Role="Clase_Propiedad_Lista" Multiplicity="*" />
+        <Association Name="FK_ClasePropiedad_ClasePropiedadLista">
+          <End Type="CSEstructuraModel.ClasePropiedad" Role="ClasePropiedad" Multiplicity="1" />
+          <End Type="CSEstructuraModel.ClasePropiedadLista" Role="ClasePropiedadLista" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Clase_Propiedad">
-              <PropertyRef Name="IDClase" />
-              <PropertyRef Name="IDPropiedad" />
+            <Principal Role="ClasePropiedad">
+              <PropertyRef Name="IdClase" />
+              <PropertyRef Name="IdPropiedad" />
             </Principal>
-            <Dependent Role="Clase_Propiedad_Lista">
-              <PropertyRef Name="IDClase" />
-              <PropertyRef Name="IDPropiedad" />
+            <Dependent Role="ClasePropiedadLista">
+              <PropertyRef Name="IdClase" />
+              <PropertyRef Name="IdPropiedad" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Objeto__Objeto_Propiedad">
-          <End Type="CSEstructuraModel.Objeto" Role="Objeto" Multiplicity="1" />
-          <End Type="CSEstructuraModel.Objeto_Propiedad" Role="Objeto_Propiedad" Multiplicity="*" />
+        <Association Name="FK_Objeto_Objeto">
+          <End Type="CSEstructuraModel.Objeto" Role="Objeto" Multiplicity="0..1" />
+          <End Type="CSEstructuraModel.Objeto" Role="Objeto1" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Objeto">
-              <PropertyRef Name="IDObjeto" />
+              <PropertyRef Name="IdObjeto" />
             </Principal>
-            <Dependent Role="Objeto_Propiedad">
-              <PropertyRef Name="IDObjeto" />
+            <Dependent Role="Objeto1">
+              <PropertyRef Name="IdObjetoPadre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_Objeto_ObjetoPropiedad">
+          <End Type="CSEstructuraModel.Objeto" Role="Objeto" Multiplicity="1" />
+          <End Type="CSEstructuraModel.ObjetoPropiedad" Role="ObjetoPropiedad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Objeto">
+              <PropertyRef Name="IdObjeto" />
+            </Principal>
+            <Dependent Role="ObjetoPropiedad">
+              <PropertyRef Name="IdObjeto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -442,12 +408,12 @@
           <EntitySetMapping Name="Accion">
             <EntityTypeMapping TypeName="CSEstructuraModel.Accion">
               <MappingFragment StoreEntitySet="Accion">
-                <ScalarProperty Name="IDAccion" ColumnName="IDAccion" />
-                <ScalarProperty Name="IDObjeto" ColumnName="IDObjeto" />
-                <ScalarProperty Name="IDDato" ColumnName="IDDato" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdDato" ColumnName="IdDato" />
+                <ScalarProperty Name="IdObjeto" ColumnName="IdObjeto" />
+                <ScalarProperty Name="IdAccion" ColumnName="IdAccion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -455,8 +421,30 @@
             <EntityTypeMapping TypeName="CSEstructuraModel.Clase">
               <MappingFragment StoreEntitySet="Clase">
                 <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
-                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClasePropiedad">
+            <EntityTypeMapping TypeName="CSEstructuraModel.ClasePropiedad">
+              <MappingFragment StoreEntitySet="ClasePropiedad">
+                <ScalarProperty Name="TipoDatoIdClase" ColumnName="TipoDatoIdClase" />
+                <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdPropiedad" ColumnName="IdPropiedad" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClasePropiedadLista">
+            <EntityTypeMapping TypeName="CSEstructuraModel.ClasePropiedadLista">
+              <MappingFragment StoreEntitySet="ClasePropiedadLista">
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdLista" ColumnName="IdLista" />
+                <ScalarProperty Name="IdPropiedad" ColumnName="IdPropiedad" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -465,10 +453,24 @@
               <MappingFragment StoreEntitySet="Objeto">
                 <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
                 <ScalarProperty Name="Notas" ColumnName="Notas" />
-                <ScalarProperty Name="IDObjeto" ColumnName="IDObjeto" />
-                <ScalarProperty Name="IDObjeto_Padre" ColumnName="IDObjeto_Padre" />
+                <ScalarProperty Name="IdClase" ColumnName="IdClase" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
+                <ScalarProperty Name="IdObjetoPadre" ColumnName="IdObjetoPadre" />
+                <ScalarProperty Name="IdObjeto" ColumnName="IdObjeto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjetoPropiedad">
+            <EntityTypeMapping TypeName="CSEstructuraModel.ObjetoPropiedad">
+              <MappingFragment StoreEntitySet="ObjetoPropiedad">
+                <ScalarProperty Name="ValorFechaHora" ColumnName="ValorFechaHora" />
+                <ScalarProperty Name="ValorLista" ColumnName="ValorLista" />
+                <ScalarProperty Name="ValorSiNo" ColumnName="ValorSiNo" />
+                <ScalarProperty Name="ValorNumeroDecimal" ColumnName="ValorNumeroDecimal" />
+                <ScalarProperty Name="ValorNumeroEntero" ColumnName="ValorNumeroEntero" />
+                <ScalarProperty Name="ValorTexto" ColumnName="ValorTexto" />
+                <ScalarProperty Name="IdPropiedad" ColumnName="IdPropiedad" />
+                <ScalarProperty Name="IdObjeto" ColumnName="IdObjeto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -483,42 +485,6 @@
                 <ScalarProperty Name="NumeroEntero" ColumnName="NumeroEntero" />
                 <ScalarProperty Name="Texto" ColumnName="Texto" />
                 <ScalarProperty Name="IDParametro" ColumnName="IDParametro" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clase_Propiedad">
-            <EntityTypeMapping TypeName="CSEstructuraModel.Clase_Propiedad">
-              <MappingFragment StoreEntitySet="Clase_Propiedad">
-                <ScalarProperty Name="TipoDato_IDClase" ColumnName="TipoDato_IDClase" />
-                <ScalarProperty Name="TipoDato" ColumnName="TipoDato" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
-                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clase_Propiedad_Lista">
-            <EntityTypeMapping TypeName="CSEstructuraModel.Clase_Propiedad_Lista">
-              <MappingFragment StoreEntitySet="Clase_Propiedad_Lista">
-                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="IDLista" ColumnName="IDLista" />
-                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
-                <ScalarProperty Name="IDClase" ColumnName="IDClase" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Objeto_Propiedad">
-            <EntityTypeMapping TypeName="CSEstructuraModel.Objeto_Propiedad">
-              <MappingFragment StoreEntitySet="Objeto_Propiedad">
-                <ScalarProperty Name="Valor_Lista" ColumnName="Valor_Lista" />
-                <ScalarProperty Name="Valor_SiNo" ColumnName="Valor_SiNo" />
-                <ScalarProperty Name="Valor_FechaHora" ColumnName="Valor_FechaHora" />
-                <ScalarProperty Name="Valor_NumeroDecimal" ColumnName="Valor_NumeroDecimal" />
-                <ScalarProperty Name="Valor_NumeroEntero" ColumnName="Valor_NumeroEntero" />
-                <ScalarProperty Name="Valor_Texto" ColumnName="Valor_Texto" />
-                <ScalarProperty Name="IDPropiedad" ColumnName="IDPropiedad" />
-                <ScalarProperty Name="IDObjeto" ColumnName="IDObjeto" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

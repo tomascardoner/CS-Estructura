@@ -1,6 +1,7 @@
 ﻿Public Class formObjetos
 
 #Region "Declarations"
+
     Private Const NODO_CARGANDO_TEXTO As String = "Cargando..."
 
     Private mdbContext As New CSEstructuraContext(True)
@@ -9,14 +10,16 @@
     Private mEditMode As Boolean = False
 
     Public Class GridRowData_PropiedadesYValores
-        Public Property IDPropiedad As Short
+        Public Property IdPropiedad As Short
         Public Property Nombre As String
         Public Property TipoDato As String
         Public Property Valor As String
     End Class
+
 #End Region
 
 #Region "Form stuff"
+
     Private Sub ChangeMode()
         toolstripMain.Visible = (mEditMode = False)
         toolstripEdit.Visible = mEditMode
@@ -62,6 +65,7 @@
 #End Region
 
 #Region "Load and Show Data"
+
     Friend Sub SetDataFromObjectToControls()
         If mObjetoActual Is Nothing Then
             textboxNombre.Clear()
@@ -121,11 +125,11 @@
         ' Leo los Objetos
         If Objeto_Padre Is Nothing Then
             listObjetos = (From obj In mdbContext.Objeto
-                           Where obj.IDObjeto_Padre Is Nothing
+                           Where obj.IdObjetoPadre Is Nothing
                            Order By obj.Nombre).ToList
         Else
             listObjetos = (From obj In mdbContext.Objeto
-                           Where obj.IDObjeto_Padre = Objeto_Padre.IDObjeto
+                           Where obj.IdObjetoPadre = Objeto_Padre.IdObjeto
                            Order By obj.Nombre).ToList
         End If
 
@@ -150,18 +154,18 @@
         Me.Cursor = Cursors.Default
     End Sub
 
-    Friend Sub RefreshData_Propiedades(Optional ByVal PosicionIDPropiedad As Short = 0, Optional ByVal RestaurarPosicionActual As Boolean = False)
+    Friend Sub RefreshData_Propiedades(Optional ByVal posicionIdPropiedad As Short = 0, Optional ByVal RestaurarPosicionActual As Boolean = False)
         Dim IDClase As Short
         Dim IDObjeto As Short
 
-        IDClase = Convert.ToInt16(IIf(mObjetoActual.IDClase.HasValue, mObjetoActual.IDClase, 0))
-        IDObjeto = mObjetoActual.IDObjeto
+        IDClase = Convert.ToInt16(IIf(mObjetoActual.IdClase.HasValue, mObjetoActual.IdClase, 0))
+        IDObjeto = mObjetoActual.IdObjeto
 
         If RestaurarPosicionActual Then
             If datagridviewPropiedades.CurrentRow Is Nothing Then
-                PosicionIDPropiedad = 0
+                posicionIdPropiedad = 0
             Else
-                PosicionIDPropiedad = CType(datagridviewPropiedades.CurrentRow.DataBoundItem, GridRowData_PropiedadesYValores).IDPropiedad
+                posicionIdPropiedad = CType(datagridviewPropiedades.CurrentRow.DataBoundItem, GridRowData_PropiedadesYValores).IDPropiedad
             End If
         End If
 
@@ -169,40 +173,40 @@
 
         Try
             Dim listGridRowData_PropiedadesYValores As List(Of GridRowData_PropiedadesYValores)
-            Dim listObjetosPropiedades As List(Of Objeto_Propiedad)
+            Dim listObjetosPropiedades As List(Of ObjetoPropiedad)
             Dim IndiceObjetoActual As Short
-            Dim Objeto_PropiedadActual As Objeto_Propiedad
+            Dim ObjetoPropiedadActual As ObjetoPropiedad
 
-            listGridRowData_PropiedadesYValores = (From cla_pro In mdbContext.Clase_Propiedad
-                                                    Where cla_pro.IDClase = IDClase
-                                                    Order By cla_pro.IDPropiedad
-                                                    Select New GridRowData_PropiedadesYValores With {.IDPropiedad = cla_pro.IDPropiedad, .Nombre = cla_pro.Nombre, .TipoDato = cla_pro.TipoDato}).ToList
+            listGridRowData_PropiedadesYValores = (From clapro In mdbContext.ClasePropiedad
+                                                   Where clapro.IdClase = IDClase
+                                                   Order By clapro.IdPropiedad
+                                                   Select New GridRowData_PropiedadesYValores With {.IdPropiedad = clapro.IdPropiedad, .Nombre = clapro.Nombre, .TipoDato = clapro.TipoDato}).ToList
 
-            listObjetosPropiedades = (From obj_pro In mObjetoActual.Objeto_Propiedades
-                                      Where obj_pro.IDObjeto = IDObjeto
-                                      Order By obj_pro.IDPropiedad).ToList
+            listObjetosPropiedades = (From objpro In mObjetoActual.ObjetoPropiedades
+                                      Where objpro.IdObjeto = IDObjeto
+                                      Order By objpro.IdPropiedad).ToList
 
             If listObjetosPropiedades.Count > 0 Then
                 IndiceObjetoActual = 0
 
                 For Each RowActual As GridRowData_PropiedadesYValores In listGridRowData_PropiedadesYValores
-                    Objeto_PropiedadActual = listObjetosPropiedades(IndiceObjetoActual)
-                    Select Case Objeto_PropiedadActual.IDPropiedad
-                        Case Is < RowActual.IDPropiedad
+                    ObjetoPropiedadActual = listObjetosPropiedades(IndiceObjetoActual)
+                    Select Case ObjetoPropiedadActual.IdPropiedad
+                        Case Is < RowActual.IdPropiedad
                             ' Es una propiedad huérfana
-                            listGridRowData_PropiedadesYValores.Add(New GridRowData_PropiedadesYValores With {.IDPropiedad = Objeto_PropiedadActual.IDPropiedad, .Nombre = My.Resources.STRING_ITEM_NONE_CHARS20, .Valor = Objeto_PropiedadActual.Valor(IDClase, .TipoDato, mdbContext)})
+                            listGridRowData_PropiedadesYValores.Add(New GridRowData_PropiedadesYValores With {.IdPropiedad = ObjetoPropiedadActual.IdPropiedad, .Nombre = My.Resources.STRING_ITEM_NONE_CHARS20, .Valor = ObjetoPropiedadActual.Valor(IDClase, .TipoDato, mdbContext)})
                             IndiceObjetoActual += Convert.ToInt16(1)
                             If IndiceObjetoActual > listObjetosPropiedades.Count - 1 Then
                                 Exit For
                             End If
-                        Case RowActual.IDPropiedad
+                        Case RowActual.IdPropiedad
                             ' Es la propiedad correcta
-                            RowActual.Valor = Objeto_PropiedadActual.Valor(IDClase, RowActual.TipoDato, mdbContext)
+                            RowActual.Valor = ObjetoPropiedadActual.Valor(IDClase, RowActual.TipoDato, mdbContext)
                             IndiceObjetoActual += Convert.ToInt16(1)
                             If IndiceObjetoActual > listObjetosPropiedades.Count - 1 Then
                                 Exit For
                             End If
-                        Case Is > RowActual.IDPropiedad
+                        Case Is > RowActual.IdPropiedad
                             ' Espero a la próxima iteración
                     End Select
                 Next
@@ -219,9 +223,9 @@
 
         Me.Cursor = Cursors.Default
 
-        If PosicionIDPropiedad <> 0 Then
+        If posicionIdPropiedad <> 0 Then
             For Each CurrentRowChecked As DataGridViewRow In datagridviewPropiedades.Rows
-                If CType(CurrentRowChecked.DataBoundItem, GridRowData_PropiedadesYValores).IDPropiedad = PosicionIDPropiedad Then
+                If CType(CurrentRowChecked.DataBoundItem, GridRowData_PropiedadesYValores).IDPropiedad = posicionIdPropiedad Then
                     datagridviewPropiedades.CurrentCell = CurrentRowChecked.Cells(0)
                     Exit For
                 End If
@@ -232,6 +236,7 @@
 #End Region
 
 #Region "Controls Behavior"
+
     Private Sub TextBoxs_GotFocus(sender As Object, e As EventArgs) Handles textboxNombre.GotFocus, textboxNotas.GotFocus
         CType(sender, TextBox).SelectAll()
     End Sub
@@ -251,7 +256,7 @@
     End Sub
 
     Private Sub AbrirPropiedad() Handles datagridviewPropiedades.DoubleClick
-        Dim Objeto_PropiedadActual As Objeto_Propiedad
+        Dim Objeto_PropiedadActual As ObjetoPropiedad
         Dim GridRowData_Actual As GridRowData_PropiedadesYValores
 
         If datagridviewPropiedades.CurrentRow Is Nothing Then
@@ -262,12 +267,12 @@
             datagridviewPropiedades.Enabled = False
 
             GridRowData_Actual = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, GridRowData_PropiedadesYValores)
-            Objeto_PropiedadActual = mObjetoActual.Objeto_Propiedades.Where(Function(obj_pro) obj_pro.IDPropiedad = GridRowData_Actual.IDPropiedad).FirstOrDefault
+            Objeto_PropiedadActual = mObjetoActual.ObjetoPropiedades.Where(Function(obj_pro) obj_pro.IdPropiedad = GridRowData_Actual.IdPropiedad).FirstOrDefault
             If Objeto_PropiedadActual Is Nothing Then
-                Objeto_PropiedadActual = New Objeto_Propiedad
+                Objeto_PropiedadActual = New ObjetoPropiedad
                 Objeto_PropiedadActual.IDPropiedad = GridRowData_Actual.IDPropiedad
             End If
-            formObjeto_Propiedad.LoadAndShow(mEditMode, mEditMode, Me, mObjetoActual, Objeto_PropiedadActual, GridRowData_Actual.Nombre, GridRowData_Actual.TipoDato)
+            formObjetoPropiedad.LoadAndShow(mEditMode, mEditMode, Me, mObjetoActual, Objeto_PropiedadActual, GridRowData_Actual.Nombre, GridRowData_Actual.TipoDato)
 
             datagridviewPropiedades.Enabled = True
 
@@ -276,7 +281,7 @@
     End Sub
 
     Private Sub EliminarValorPropiedad(sender As Object, e As KeyPressEventArgs) Handles datagridviewPropiedades.KeyPress
-        Dim Objeto_PropiedadActual As Objeto_Propiedad
+        Dim Objeto_PropiedadActual As ObjetoPropiedad
         Dim GridRowData_Actual As GridRowData_PropiedadesYValores
 
         If mEditMode AndAlso e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Delete) Then
@@ -286,22 +291,24 @@
                 Me.Cursor = Cursors.WaitCursor
 
                 GridRowData_Actual = CType(datagridviewPropiedades.SelectedRows(0).DataBoundItem, GridRowData_PropiedadesYValores)
-                Objeto_PropiedadActual = mObjetoActual.Objeto_Propiedades.Where(Function(obj_pro) obj_pro.IDPropiedad = GridRowData_Actual.IDPropiedad).First
-                mObjetoActual.Objeto_Propiedades.Remove(Objeto_PropiedadActual)
+                Objeto_PropiedadActual = mObjetoActual.ObjetoPropiedades.Where(Function(obj_pro) obj_pro.IdPropiedad = GridRowData_Actual.IdPropiedad).First
+                mObjetoActual.ObjetoPropiedades.Remove(Objeto_PropiedadActual)
                 RefreshData_Propiedades(0, True)
 
                 Me.Cursor = Cursors.Default
             End If
         End If
     End Sub
+
 #End Region
 
 #Region "Main Toolbar"
+
     Private Sub AgregarEnUbicacionActual_Click(sender As Object, e As EventArgs) Handles buttonAgregar.ButtonClick, menuitemAgregarEnUbicacionActual.Click
         mObjetoActual = New Objeto
         mObjetoActual.EsActivo = True
         If Not treeviewObjetos.SelectedNode Is Nothing Then
-            mObjetoActual.IDObjeto_Padre = CType(treeviewObjetos.SelectedNode.Tag, Objeto).IDObjeto
+            mObjetoActual.IdObjetoPadre = CType(treeviewObjetos.SelectedNode.Tag, Objeto).IdObjeto
         End If
         SetDataFromObjectToControls()
 
@@ -313,7 +320,7 @@
         mObjetoActual = New Objeto
         mObjetoActual.EsActivo = True
         If Not treeviewObjetos.SelectedNode Is Nothing Then
-            mObjetoActual.IDObjeto_Padre = OBJETO_PLANTILLA_ID
+            mObjetoActual.IdObjetoPadre = Constantes.ObjetoIdPlantilla
         End If
         SetDataFromObjectToControls()
 
@@ -324,7 +331,7 @@
     Private Sub AgregarNodoRaiz_Click(sender As Object, e As EventArgs) Handles menuitemAgregarNodoRaiz.Click
         mObjetoActual = New Objeto
         mObjetoActual.EsActivo = True
-        mObjetoActual.IDObjeto_Padre = Nothing
+        mObjetoActual.IdObjetoPadre = Nothing
         SetDataFromObjectToControls()
 
         mEditMode = True
@@ -381,6 +388,7 @@
 #End Region
 
 #Region "Edit Toolbar"
+
     Private Sub Guardar() Handles buttonGuardar.Click
         Dim IsNew As Boolean
 
@@ -468,7 +476,7 @@
         ChangeMode()
 
         ' Tengo que resetear las propiedades modificadas
-        For Each Objeto_PropiedadActual In mdbContext.ChangeTracker.Entries(Of Objeto_Propiedad)()
+        For Each Objeto_PropiedadActual In mdbContext.ChangeTracker.Entries(Of ObjetoPropiedad)()
             Select Case Objeto_PropiedadActual.State
                 Case Entity.EntityState.Added
                     Objeto_PropiedadActual.State = Entity.EntityState.Detached
@@ -485,6 +493,7 @@
         End If
         SetDataFromObjectToControls()
     End Sub
+
 #End Region
 
 End Class

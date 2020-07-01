@@ -76,7 +76,7 @@
         End If
 
         ' Verifico que la Base de Datos corresponda a esta Aplicación a través del GUID guardado en los Parámetros
-        If CS_Parameter_System.GetString(Parametros.APPLICATION_DATABASE_GUID) <> Constantes.APPLICATION_DATABASE_GUID Then
+        If CS_Parameter_System.GetString(Parametros.APPLICATION_DATABASE_GUID) <> Constantes.ApplicationDatabaseGuid Then
             MsgBox("La Base de Datos especificada no corresponde a esta aplicación.", MsgBoxStyle.Critical, My.Application.Info.Title)
             formSplashScreen.Close()
             formSplashScreen.Dispose()

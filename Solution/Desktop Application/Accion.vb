@@ -11,14 +11,13 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Accion
-    Public Property IDAccion As Integer
-    Public Property IDObjeto As Short
-    Public Property IDDato As Nullable(Of Short)
+    Public Property IdAccion As Integer
+    Public Property IdObjeto As Short
+    Public Property IdDato As Nullable(Of Short)
     Public Property Fecha As Date
     Public Property Tipo As String
     Public Property Descripcion As String
 
-    Public Overridable Property Objeto As Objeto
-    Public Overridable Property Objeto_Propiedad As Objeto_Propiedad
+    Public Overridable Property ObjetoPropiedad As ObjetoPropiedad
 
 End Class
